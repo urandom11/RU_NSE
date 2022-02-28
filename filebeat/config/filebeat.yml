@@ -1,7 +1,7 @@
 filebeat.inputs:
 - type: filestream
   paths:
-    - /*.json
+    - /data/*.json
 
 output.elasticsearch:
   hosts: ["${ELK_HOST}"]

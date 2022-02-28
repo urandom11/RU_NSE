@@ -20,12 +20,17 @@ services:
     user: root
     volumes:
       - type: bind
+        source: ./results
+        target: /data
+        read_only: true
+      - type: bind
         source: ./filebeat
         target: /usr/share/filebeat/data
-      - ${PWD}/filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      #- ${PWD}/filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml
     environment:
       - ELK_HOST=${ELK_HOST}
       - ELK_USERNAME=${ELK_USERNAME:-elastic}
       - ELK_PASSWORD=${ELK_PASSWORD:-changeme}
+    hostname: "{{.Node.Hostname}}-filebeat"
 
 #file: $PWD/filebeat/config/filebeat.yml
