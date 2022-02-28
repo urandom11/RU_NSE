@@ -1,0 +1,9 @@
+filebeat.inputs:
+- type: filestream
+  paths:
+    - /*.json
+
+output.elasticsearch:
+  hosts: ["${ELK_HOST}"]
+  username: ${ELK_USERNAME}
+  password: ${ELK_PASSWORD}
